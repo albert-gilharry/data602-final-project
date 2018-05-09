@@ -1,0 +1,11 @@
+datetime
+numpy
+matplotlib
+flask
+redis
+pandas
+requests
+pymongo
+scipy
+statsmodels
+scikit-learn
