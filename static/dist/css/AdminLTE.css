@@ -4985,3 +4985,47 @@ table.text-center th {
     margin-top: 9px;
 	
 }
+
+#loading-overlay {
+	background: radial-gradient(ellipse closest-corner at 50% 50% , rgba(0, 0, 0, 0.3) 1%, rgba(0, 0, 0, 0.725) 100%) repeat scroll 0 0 transparent;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 9999999;
+}
+#loading {
+	background: url(/static/images/bg.png) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	height: 200px;
+	left: 50%;
+	margin-left: -140px;
+	margin-top: -88.5px;
+	position: fixed;
+	text-align: center;
+	top: 50%;
+	width: 280px;
+	z-index: 9999999;
+}
+#loading:after {
+	background: url(/static/images/spinner.gif) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	content: " ";
+	display: block;
+	height: 32px;
+	left: 50%;
+	margin-left: -16px;
+	margin-top: -16px;
+	position: absolute;
+	top: 68px;
+	width: 32px;
+  
+}
+#loading span {
+	color: #3c3c3c !important;
+	font-weight: bold;
+}
+#loading span {
+	display: inline-block;
+	position: relative;
+	top: 123px;
+}
