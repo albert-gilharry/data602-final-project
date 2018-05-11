@@ -28,7 +28,18 @@
 </head>
 <body class="hold-transition skin-green-light sidebar-mini">
 <div class="wrapper">
-
+<div id="loading-overlay"></div>
+<div id="loading">
+	<span> 
+		<div><span style="width:200px;top: -35px;position: relative;" id="loadInfo"></span>
+		<div class="progress" style="width:200px;margin-top: -25px;">
+			<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%; min-width:0px;color:#3c3c3c;">
+			Working...
+			</div>
+		</div>
+		</div>
+	</span>
+</div>
   <!-- Main Header -->
   <header class="main-header">
 
@@ -64,38 +75,23 @@
               <!-- The user image in the menu -->
               <li class="user-header">
                 <p>
-                 This was .................................
-				 sdjafsklfjklsfjsdklfjlsdkjfklsdfjsd
-				 asklfsjdfklsdjfklsdjfklasdjklafsdf
-				 askldfjasdkljfsdklfjsdklafjklsdjfsdlfjd
-				 asfsalfjsffaslkfjsdklfjsdklfjskldfjsd
-				 aslfjaslafjsdlfjsdklfjskldafjklsjfdl
-				 aklsfjaskldafjsdklfjsfkldjalfkdjklfss
+                 Our team details go here.
                 </p>
               </li>
               <!-- Menu Body -->
-              <li class="user-body">
+              <li class="user-footer">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
+                    <a href="#">Jagruti</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
+                    <a href="#">Harpreet</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                    <a href="#">Albert</a>
                   </div>
                 </div>
                 <!-- /.row -->
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
               </li>
             </ul>
           </li>
@@ -151,18 +147,50 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Visualizations</small>
+        User Recommendations
+        <small>A sample of 20 of over 200,000 users is available.</small>
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content container-fluid">
+		<div class="box box-default">
+			<div class="box-header with-border">
+			  <h3 class="box-title">Select User</h3>
 
-      <!-- TABLE: LATEST ORDERS -->
+			  <div class="box-tools pull-right">
+				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+				<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+			  </div>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+				<div class="row">
+					<div class="col-md-12">
+					  <div class="form-group">
+						<div class="row">
+							<div class="col-md-6">
+								<select name = "users" id = "users" class="form-control select2" style="width: 100%;">
+								  <option></option>
+								</select> 
+							</div>
+							<div class="col-md-2">
+								<button type="button" class="btn btn-block btn-warning" id="resample">Resample Users</button>
+							</div>
+						</div>
+					  </div>
+					</div>
+				</div>
+			  <!-- /.row -->
+			</div>
+			<!-- /.box-body -->			
+		</div>
+		  	  
+		<!-- /.box -->
+		<!-- TABLE: LATEST ORDERS -->
 			<div class="box box-info">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Most Popular Users</h3>
+				  <h3 class="box-title">Recommended Products</h3>
 
 				  <div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -176,80 +204,20 @@
 					<table class="table no-margin">
 					  <thead>
 					  <tr>
-						<th>Order ID</th>
-						<th>Item</th>
-						<th>Status</th>
-						<th>Popularity</th>
+						<th>Product ID</th>
+						<th>Product</th>
+						<th>Department</th>
+						<th>Aisle</th>
 					  </tr>
 					  </thead>
-					  <tbody>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR9842</a></td>
-						<td>Call of Duty IV</td>
-						<td><span class="label label-success">Shipped</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR1848</a></td>
-						<td>Samsung Smart TV</td>
-						<td><span class="label label-warning">Pending</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR7429</a></td>
-						<td>iPhone 6 Plus</td>
-						<td><span class="label label-danger">Delivered</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR7429</a></td>
-						<td>Samsung Smart TV</td>
-						<td><span class="label label-info">Processing</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR1848</a></td>
-						<td>Samsung Smart TV</td>
-						<td><span class="label label-warning">Pending</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR7429</a></td>
-						<td>iPhone 6 Plus</td>
-						<td><span class="label label-danger">Delivered</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR9842</a></td>
-						<td>Call of Duty IV</td>
-						<td><span class="label label-success">Shipped</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-						</td>
-					  </tr>
+					  <tbody id="recommendations">
+					  
 					  </tbody>
 					</table>
 				  </div>
 				  <!-- /.table-responsive -->
 				</div>
 				<!-- /.box-body -->
-				<div class="box-footer clearfix">
-				  <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-				  <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
-				</div>
-				<!-- /.box-footer -->
 			</div>
 			<!-- /.box -->
 
@@ -281,7 +249,7 @@
 <!-- AdminLTE App -->
 <script src="{{ url_for('static', filename='dist/js/adminlte.min.js') }}"></script>
 <!-- Custom JS -->
-<script src="{{ url_for('static', filename='dist/js/dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='dist/js/recommendations.js') }}"></script>
 
 
 </body>

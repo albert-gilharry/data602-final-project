@@ -27,8 +27,9 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-green-light sidebar-mini">
-<div style="display: none;" id="loading-overlay"></div>
-<div style="display: none;" id="loading">
+<div class="wrapper">
+<div id="loading-overlay"></div>
+<div id="loading">
 	<span> 
 		<div><span style="width:200px;top: -35px;position: relative;" id="loadInfo"></span>
 		<div class="progress" style="width:200px;margin-top: -25px;">
@@ -39,8 +40,6 @@
 		</div>
 	</span>
 </div>
-<div class="wrapper">
-
   <!-- Main Header -->
   <header class="main-header">
 
@@ -76,38 +75,23 @@
               <!-- The user image in the menu -->
               <li class="user-header">
                 <p>
-                 This was .................................
-				 sdjafsklfjklsfjsdklfjlsdkjfklsdfjsd
-				 asklfsjdfklsdjfklsdjfklasdjklafsdf
-				 askldfjasdkljfsdklfjsdklafjklsdjfsdlfjd
-				 asfsalfjsffaslkfjsdklfjsdklfjskldfjsd
-				 aslfjaslafjsdlfjsdklfjskldafjklsjfdl
-				 aklsfjaskldafjsdklfjsfkldjalfkdjklfss
+                 Our team details go here.
                 </p>
               </li>
               <!-- Menu Body -->
-              <li class="user-body">
+              <li class="user-footer">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
+                    <a href="#">Jagruti</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
+                    <a href="#">Harpreet</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                    <a href="#">Albert</a>
                   </div>
                 </div>
                 <!-- /.row -->
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
               </li>
             </ul>
           </li>
@@ -177,7 +161,7 @@
 			  <!-- small box -->
 			  <div class="small-box bg-aqua">
 				<div class="inner">
-				  <h3>150</h3>
+				  <h3 id="num_orders">0</h3>
 
 				  <p>Total Orders</p>
 				</div>
@@ -192,7 +176,7 @@
 			  <!-- small box -->
 			  <div class="small-box bg-yellow">
 				<div class="inner">
-				  <h3>44</h3>
+				  <h3 id="num_users">0</h3>
 
 				  <p>Registered Users</p>
 				</div>
@@ -207,7 +191,7 @@
 			  <!-- small box -->
 			  <div class="small-box bg-green">
 				<div class="inner">
-				  <h3>53<sup style="font-size: 20px">%</sup></h3>
+				  <h3 id="num_products">0</h3>
 
 				  <p>Products</p>
 				</div>
@@ -221,7 +205,7 @@
 			  <!-- small box -->
 			  <div class="small-box bg-red">
 				<div class="inner">
-				  <h3>65</h3>
+				  <h3 id="top_product">0</h3>
 
 				  <p>Top Product</p>
 				</div>
@@ -238,10 +222,9 @@
 		
 		<div class="row">
 			<div class="col-md-6">
-			  <!-- AREA CHART -->
 			  <div class="box box-primary">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Orders by Department</h3>
+				  <h3 class="box-title">Instacart Orders by Time of Day</h3>
 
 				  <div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -251,38 +234,46 @@
 				</div>
 				<div class="box-body">
 				  <div class="chart">
-					<div id="departmentChart" style="height:250px"></div>
+					<div id="tod" style="height:250px"></div>
 				  </div>
 				</div>
 				<!-- /.box-body -->
 			  </div>
 			  <!-- /.box -->
-
-			  <!-- DONUT CHART -->
-			  <div class="box box-danger">
-				<div class="box-header with-border">
-				  <h3 class="box-title">Orders by Day of Week</h3>
-
-				  <div class="box-tools pull-right">
-					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-					</button>
-					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-				  </div>
-				</div>
-				<div class="box-body">
-				  <canvas id="pieChart" style="height:250px"></canvas>
-				</div>
-				<!-- /.box-body -->
-			  </div>
-			  <!-- /.box -->
+<!-- TABLE: LATEST ORDERS -->
+			  
 
 			</div>
 			<!-- /.col (LEFT) -->
 			<div class="col-md-6">
-			  <!-- LINE CHART -->
-			  <div class="box box-info">
+			
+			<!-- DONUT CHART -->
+			  <div class="box box-danger">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Orders by Time of Day</h3>
+				  <h3 class="box-title">Instacart Orders by Day of Week</h3>
+
+				  <div class="box-tools pull-right">
+					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+					</button>
+					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+				  </div>
+				</div>
+				<div class="box-body">
+				  <div id="dow" style="height:250px"></div>
+				</div>
+				<!-- /.box-body -->
+			  </div>
+			  <!-- /.box -->
+			</div>
+			<!-- /.col (RIGHT) -->
+		</div>
+		<!-- /.row -->
+		
+		<div class="row">
+			<div class="col-md-12">
+			  <div class="box box-primary">
+				<div class="box-header with-border">
+				  <h3 class="box-title">Popular Aisles</h3>
 
 				  <div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -292,111 +283,14 @@
 				</div>
 				<div class="box-body">
 				  <div class="chart">
-					<canvas id="lineChart" style="height:250px"></canvas>
+					<div id="aisles" style="height:350px"></div>
 				  </div>
 				</div>
 				<!-- /.box-body -->
 			  </div>
 			  <!-- /.box -->
-
-			<!-- TABLE: LATEST ORDERS -->
-			<div class="box box-info">
-				<div class="box-header with-border">
-				  <h3 class="box-title">Most Popular Products</h3>
-
-				  <div class="box-tools pull-right">
-					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-					</button>
-					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-				  </div>
-				</div>
-			<!-- /.box-header -->
-				<div class="box-body">
-				  <div class="table-responsive">
-					<table class="table no-margin">
-					  <thead>
-					  <tr>
-						<th>Order ID</th>
-						<th>Item</th>
-						<th>Status</th>
-						<th>Popularity</th>
-					  </tr>
-					  </thead>
-					  <tbody>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR9842</a></td>
-						<td>Call of Duty IV</td>
-						<td><span class="label label-success">Shipped</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR1848</a></td>
-						<td>Samsung Smart TV</td>
-						<td><span class="label label-warning">Pending</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR7429</a></td>
-						<td>iPhone 6 Plus</td>
-						<td><span class="label label-danger">Delivered</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR7429</a></td>
-						<td>Samsung Smart TV</td>
-						<td><span class="label label-info">Processing</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR1848</a></td>
-						<td>Samsung Smart TV</td>
-						<td><span class="label label-warning">Pending</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR7429</a></td>
-						<td>iPhone 6 Plus</td>
-						<td><span class="label label-danger">Delivered</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-						</td>
-					  </tr>
-					  <tr>
-						<td><a href="pages/examples/invoice.html">OR9842</a></td>
-						<td>Call of Duty IV</td>
-						<td><span class="label label-success">Shipped</span></td>
-						<td>
-						  <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-						</td>
-					  </tr>
-					  </tbody>
-					</table>
-				  </div>
-				  <!-- /.table-responsive -->
-				</div>
-				<!-- /.box-body -->
-				<div class="box-footer clearfix">
-				  <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-				  <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
-				</div>
-				<!-- /.box-footer -->
 			</div>
-			<!-- /.box -->
-
-			</div>
-			<!-- /.col (RIGHT) -->
 		</div>
-		<!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
