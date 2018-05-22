@@ -16,11 +16,11 @@ $(document).ready(function(){
 				
 					var output = [];
 					for(i=0;i < result.data.length;i++){					
-						output.push('<option value="'+ result.data[i][1] +'"> Customer '+ result.data[i][1] + '</option>');	
+						output.push('<option value="'+ result.data[i][0] +'"> Customer '+ result.data[i][0] + '</option>');	
 					}
 					
 					$('#users').html(output.join(''));
-					$('#users').val(result.data[0][1]);
+					$('#users').val(result.data[0][0]);
 					$('#recommendations').html('');
 					loadRecommendations();
 				}	

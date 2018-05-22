@@ -22,10 +22,11 @@ class Recommender:
     
     
     def __init__(self):
-        self.dbCon=self.connect()
+        self.dbCon=None
         self.department_dist = {"departments":[], "orders":[]}
             
     def getVisuals(self):
+        self.dbCon=self.connect()
         cursor = self.dbCon.cursor()
         cursor.execute("SELECT * FROM aisles_distribution ORDER BY aisles_distribution.orders DESC LIMIT 25")
         rows = cursor.fetchall()
@@ -67,7 +68,7 @@ class Recommender:
         cursor.execute("SELECT * FROM products_distribution ORDER BY orders DESC LIMIT 1;")
         row = cursor.fetchone()
         top_product = row[1]
-        
+        self.dbCon.close()
         return {"aisles":aisles_dist,"doweek":dow_dist,"hour_of_day":hour_dist,
                 "num_orders":num_orders, 
                 "num_users":num_users,
@@ -76,14 +77,16 @@ class Recommender:
         
     
     def sampleUsers(self):
+        self.dbCon=self.connect()
         cursor = self.dbCon.cursor()
-        cursor.execute("SELECT orders.order_dow, COUNT(*) as orders FROM orders GROUP BY orders.order_dow ORDER BY order_dow ASC")
+        cursor.execute("SELECT users.user_id FROM users ORDER BY RAND() LIMIT 20;")
         rows = cursor.fetchmany(20)
-       
+        self.dbCon.close()
         return {"success":True, "data":rows}
     
     
     def recommend(self,user_id):
+        self.dbCon=self.connect()
         cursor = self.dbCon.cursor()
         cursor.execute("SELECT products.product_id, " +  
                        "products.product_name, " + 
@@ -95,13 +98,13 @@ class Recommender:
                        "ORDER BY RAND() LIMIT 10")
         
         rows = cursor.fetchmany(10)
-       
+        self.dbCon.close()
         return {"success":True, "data":rows}
         
     def connect(self):
         """ Connect to MySQL database """
         try:
-            conn = mysql.connector.connect(host="200.32.198.69", 
+            conn = mysql.connector.connect(host="localhost", 
                                            user="insta_user", 
                                            password="Inst@User!",
                                            db="insta_cart")
