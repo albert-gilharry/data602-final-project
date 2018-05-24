@@ -1,5 +1,8 @@
 FROM python:2.7
 
+RUN apt-get -y update
+RUN apt-get -y install git
+
 WORKDIR /home/ec2-user
 
 COPY requirements.txt ./
