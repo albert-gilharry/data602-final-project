@@ -5029,3 +5029,7 @@ table.text-center th {
 	position: relative;
 	top: 123px;
 }
+
+.skin-green-light .main-header li.user-header {
+    background-color: #2b2d2f;
+}

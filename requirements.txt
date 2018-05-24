@@ -1,8 +1,7 @@
-datetime
 numpy
 matplotlib
 flask
-redis
 pandas
 requests
 mysql.connector
+graphlab

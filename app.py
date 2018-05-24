@@ -1,30 +1,36 @@
 # -*- coding: utf-8 -*-
 """
-DATA 602 Assignment Final Project: Crypto Trading
+DATA 602 Assignment Final Project: Instacart Basket
 Authors: 
     Jagruit Salao
     Harpreet Shocker
     Albert Gilharry
 """
 
-import os
 from flask import Flask, render_template, request
-import pandas as pd
-from requests import get
 import json
-import urllib.parse
 import numpy as np
 import mysql.connector
 from mysql.connector import MySQLConnection, Error
+import graphlab as gl
+
 app = Flask(__name__)
 
 class Recommender:
     
-    
+    item_similarity_top_k = 0
     def __init__(self):
         self.dbCon=None
         self.department_dist = {"departments":[], "orders":[]}
-            
+        self.item_similarity_top_k = gl.load_sframe('insta/data/item_similarity_top_5_model')
+     
+    # Get the recommended top 5 products per user    
+    def topFiveProductRecommendationForUser( self, user_id):
+        recommendedValue = self.item_similarity_top_k[self.item_similarity_top_k['user_id'] == user_id ]
+        return list(recommendedValue["item_id"].astype(str))
+	
+    # Create dashboard visuals
+    # Data is gathered from a MYSQL Database on EC2 and sent to the browser and vsiuals are generated using Highcharts.js	
     def getVisuals(self):
         self.dbCon=self.connect()
         cursor = self.dbCon.cursor()
@@ -75,17 +81,19 @@ class Recommender:
                 "num_products":num_products,
                 "top_product":top_product}
         
-    
+    # Get a sample of users to reduce load on the interface
     def sampleUsers(self):
-        self.dbCon=self.connect()
-        cursor = self.dbCon.cursor()
-        cursor.execute("SELECT users.user_id FROM users ORDER BY RAND() LIMIT 20;")
-        rows = cursor.fetchmany(20)
-        self.dbCon.close()
-        return {"success":True, "data":rows}
+        users = np.array(list(self.item_similarity_top_k['user_id']))
+        users = np.unique(users)
+        users = np.random.choice(users, 10, replace=False).reshape(10,1).tolist()
+        return {"success":True, "data":users}
     
-    
+    # Send recommendations along with additonal product information to the browswer 
     def recommend(self,user_id):
+        recommendedValue = self.item_similarity_top_k[self.item_similarity_top_k['user_id'] == int(user_id) ]
+        data = list(recommendedValue["item_id"].astype(str))
+        recommendations = ",".join( data )
+        print("recommendations: " + recommendations)
         self.dbCon=self.connect()
         cursor = self.dbCon.cursor()
         cursor.execute("SELECT products.product_id, " +  
@@ -94,17 +102,17 @@ class Recommender:
                        "aisles.aisle " + 
                        "FROM products " +
                        "INNER JOIN departments ON (departments.department_id = products.department_id) " +
-                       "INNER JOIN aisles ON (aisles.aisle_id = products.aisle_id) " + 
-                       "ORDER BY RAND() LIMIT 10")
+                       "INNER JOIN aisles ON (aisles.aisle_id = products.aisle_id) " +
+                       "WHERE products.product_id IN (" + recommendations + ") ")
         
         rows = cursor.fetchmany(10)
         self.dbCon.close()
-        return {"success":True, "data":rows}
+        return {"success":True, "data":rows}        
         
     def connect(self):
         """ Connect to MySQL database """
         try:
-            conn = mysql.connector.connect(host="localhost", 
+            conn = mysql.connector.connect(host="54.172.68.230", 
                                            user="insta_user", 
                                            password="Inst@User!",
                                            db="insta_cart")
@@ -116,6 +124,7 @@ class Recommender:
             exit()
  
 recommender = Recommender()       
+
 @app.route("/")
 def main():
     return render_template('index.html')
@@ -127,10 +136,6 @@ def dashboard():
 @app.route("/recommendations")
 def recommendations():
     return render_template('recommendations.html')
-
-@app.route("/methodology")
-def methodology():
-    return render_template('methodology.html')
 
 @app.route("/getGraphics",methods=['GET'])
 def getGraphics():
