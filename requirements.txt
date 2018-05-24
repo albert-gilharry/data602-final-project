@@ -3,5 +3,5 @@ matplotlib
 flask
 pandas
 requests
-mysql.connector
+mysql-connector-python
 graphlab
