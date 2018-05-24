@@ -22,7 +22,7 @@ class Recommender:
     def __init__(self):
         self.dbCon=None
         self.department_dist = {"departments":[], "orders":[]}
-        self.item_similarity_top_k = gl.load_sframe('insta/data/item_similarity_top_5_model')
+        self.item_similarity_top_k = gl.load_sframe('/home/ec2-user/insta/data/item_similarity_top_5_model')
      
     # Get the recommended top 5 products per user    
     def topFiveProductRecommendationForUser( self, user_id):
