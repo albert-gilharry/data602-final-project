@@ -82,6 +82,8 @@ Data storage: MySQL
 
 Docker image : docker pull albertgilharry/data602-final-project
 
+Github files: https://github.com/albert-gilharry/data602-final-project
+
 ## License:
 
 CUNY DATA602 Final Project
