@@ -12,10 +12,15 @@ source link : https://www.kaggle.com/c/instacart-market-basket-analysis
 
 #### Libraries: 
 numpy
+
 matplotlib
+
 flask
+
 pandas
+
 requests
+
 mysql-connector-python
 
 ## Installations:
@@ -56,7 +61,7 @@ c) Popular aisles in customers
  Offers five recommended products(with product ID,Product,Department,Aisle) for customer selected from drop down tab.
  
  
-## Prediction model used:
+## Prediction model:
 
  
 
@@ -64,9 +69,13 @@ c) Popular aisles in customers
 ## Built with:
 
 Python 3.0 Flask Framework
+
 Web Framework : Bootstrap(https://getbootstrap.com/. )
+
 Handling requests(Flask Application) : JQuery and custom Javascript
+
 Plots :Javascript library Highcharts.js
+
 Data storage: MySQL
 
 ## Deployment
@@ -74,11 +83,15 @@ Data storage: MySQL
 Docker image : docker pull albertgilharry/data602-final-project
 
 ## License:
+
 CUNY DATA602 Final Project
 
 ## Development:
+
 Albert Gilharry
+
 Harpreet Shocker
+
 Jagruti Solao
 
 
