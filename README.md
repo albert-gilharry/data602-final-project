@@ -63,7 +63,11 @@ c) Popular aisles in customers
  
 ## Prediction model:
 
-![alt tag](https://github.com/albert-gilharry/data602-final-project/blob/master/images/des_stats.jpg "Description goes here")
+![Item Descriptive Stats](https://github.com/albert-gilharry/data602-final-project/blob/master/images/des_stats.jpg "Description goes here")
+
+![Items Distribution](https://github.com/albert-gilharry/data602-final-project/blob/master/images/item_distribution.jpg "Description goes here")
+
+![User To Item Heat Map](https://github.com/albert-gilharry/data602-final-project/blob/master/images/heat_map.jpg "Description goes here")
 
 
 ## Built with:
