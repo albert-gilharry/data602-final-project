@@ -63,7 +63,7 @@ c) Popular aisles in customers
  
 ## Prediction model:
 
-![alt tag](http://domain.com/path/to/img.png "Description goes here")
+![alt tag](https://github.com/albert-gilharry/data602-final-project/blob/master/images/des_stats.jpg "Description goes here")
 
 
 ## Built with:
