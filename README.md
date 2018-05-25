@@ -80,9 +80,21 @@ Data storage: MySQL
 
 ## Deployment
 
-Docker image : docker pull albertgilharry/data602-final-project
+#### To run the App: 
 
-Github files: https://github.com/albert-gilharry/data602-final-project
+docker run -p 5000:5000 albertgilharry/data602-final-project
+
+#### Docker image : 
+
+docker pull albertgilharry/data602-final-project
+
+#### url to access the app from the docker image:
+
+http://localhost:5000
+
+#### Github files: 
+
+https://github.com/albert-gilharry/data602-final-project
 
 ## License:
 
