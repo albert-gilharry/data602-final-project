@@ -74,7 +74,7 @@ Web Framework : Bootstrap(https://getbootstrap.com/. )
 
 Handling requests(Flask Application) : JQuery and custom Javascript
 
-Plots :Javascript library Highcharts.js
+Plots :Javascript library Highcharts.js(https://www.highcharts.com/)
 
 Data storage: MySQL
 
