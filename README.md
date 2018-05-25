@@ -119,7 +119,7 @@ docker run -p 5000:5000 albertgilharry/data602-final-project
 
 docker pull albertgilharry/data602-final-project
 
-#### url to access the app from the docker image:
+#### Url to access the app from the docker image:
 
 http://localhost:5000
 
