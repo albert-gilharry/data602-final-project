@@ -62,13 +62,35 @@ c) Popular aisles in customers
  
  
 ## Prediction model:
+We have used a recommender system to provide personalized recommendation to users. With this toolkit, we train a model based on past interaction data and use the model to make recommendations.
 
+### Input Data
+We have used following dataset to train the model  with columns that contain user_id and item_id.
+
+This is the descriptive statistics of item_id data in dataset.
 ![Item Descriptive Stats](https://github.com/albert-gilharry/data602-final-project/blob/master/images/des_stats.jpg "Description goes here")
 
+This graph show the distribution of the item_id
 ![Items Distribution](https://github.com/albert-gilharry/data602-final-project/blob/master/images/item_distribution.jpg "Description goes here")
 
+This graph show the heat map chart between the various item and user id.
 ![User To Item Heat Map](https://github.com/albert-gilharry/data602-final-project/blob/master/images/heat_map.jpg "Description goes here")
 
+### Building a Model
+There are a variety of machine learning techniques that can be used to build a recommender model. We have used graphlab module. For this project we have used item to item similarity recommender.
+
+First we create a training dataset that will be used to train the model. Within the Order dataset there is a column eval_set that is used to determine the training set.
+actionsTraining = actions[ actions["eval_set"] == "train"]
+actionsTraining = actionsTraining.dropna(subset=['product_id'])
+actionsTraining = actionsTraining[["user_id", "product_id"]]
+actionsTraining.columns = ['user_id', 'item_id'  ]
+actionsTraining["item_id"] = actionsTraining["item_id"].astype(int)
+sf=gl.SFrame(actionsTraining)
+
+
+Now we create a item similarity recommender and use this model to recommend top 5 recommendations.
+item_similarity_recommender = gl.recommender.item_similarity_recommender.create(sf)
+item_similarity_top_k = item_similarity_recommender.recommend(k=k)
 
 ## Built with:
 
