@@ -2,7 +2,7 @@
 """
 DATA 602 Assignment Final Project: Instacart Basket
 Authors: 
-    Jagruit Salao
+    Jagruti Salao
     Harpreet Shocker
     Albert Gilharry
 """
